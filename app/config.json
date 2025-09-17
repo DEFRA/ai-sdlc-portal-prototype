@@ -1,5 +1,5 @@
 {
-  "serviceName": "ai-sdlc-portal-prototype",
+  "serviceName": "Defra AI Guidance Portal",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true

@@ -1,19 +1,36 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageName="Start" %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <p class="govuk-body-l">Get guidance on using artificial intelligence (AI) tools safely and effectively in your Defra role.</p>
+
+    <h2 class="govuk-heading-m">What you'll get</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>information on approved AI tools for Defra</li>
+      <li>practical guidance on using AI securely</li>
+      <li>a library of prompts shared by colleagues</li>
+      <li>access to support and policies</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">What you need to know</h2>
+    <p class="govuk-body">This guidance covers generative AI assistants and coding assistants. It does not cover machine learning or data science.</p>
+
+    <a href="/choose-role" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+      Start now
+      <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+      </svg>
+    </a>
+
   </div>
 </div>
 

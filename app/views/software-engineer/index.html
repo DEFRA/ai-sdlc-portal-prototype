@@ -1,0 +1,119 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Software engineer guidance" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Software engineer"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="/choose-role">Choose your role</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">AI guidance for software engineers</h1>
+    
+    <p class="govuk-body-l">Get the information and tools you need to use AI effectively in software development.</p>
+
+    <h2 class="govuk-heading-m">Your AI tools and guidance</h2>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/software-engineer/approved-tools">
+            Approved AI tools
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Find out which AI tools you can use at Defra and how to access them.</p>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/software-engineer/how-to-guide">
+            How to use AI effectively
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Practical guidance on integrating AI into your development workflow, from basics to advanced techniques.</p>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">Resources and support</h2>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/prompt-library">
+            Prompt library
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Browse and share prompts created by the Defra community.</p>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/request-form">
+            Request support
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Get help with licensing, training, or technical issues.</p>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/acceptable-use-policy">
+            Acceptable use policy
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Understand your responsibilities when using AI tools.</p>
+      </div>
+    </div>
+
+    <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h3 class="govuk-summary-card__title">
+          <a class="govuk-link govuk-link--no-visited-state" href="/survey">
+            Feedback survey
+          </a>
+        </h3>
+      </div>
+      <div class="govuk-summary-card__content">
+        <p class="govuk-body">Tell us how you're using AI and help improve this service.</p>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-s">Change role</h3>
+    <p class="govuk-body">Not a software engineer? <a href="/choose-role" class="govuk-link">Choose a different role</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,239 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Community prompt library" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Prompt library"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">Community prompt library</h1>
+    
+    <p class="govuk-body-l">Browse and share prompts created by Defra colleagues.</p>
+
+    {% if data['success'] == 'true' %}
+      {{ govukNotificationBanner({
+        type: "success",
+        html: "<p class=\"govuk-notification-banner__heading\">Your prompt has been submitted successfully</p>"
+      }) }}
+    {% endif %}
+
+    <form class="form" action="/prompt-library" method="get">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="search">
+              Search prompts
+            </label>
+            <input class="govuk-input" id="search" name="search" type="text" placeholder="Search by title, description, or category">
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="category">
+              Filter by category
+            </label>
+            <select class="govuk-select" id="category" name="category">
+              <option value="">All categories</option>
+              <option value="code-review">Code review</option>
+              <option value="debugging">Debugging</option>
+              <option value="documentation">Documentation</option>
+              <option value="testing">Testing</option>
+              <option value="refactoring">Refactoring</option>
+              <option value="general">General development</option>
+            </select>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="search-button" style="visibility: hidden;">Search</label>
+            <button class="govuk-button" data-module="govuk-button" id="search-button">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l">Example prompts</h2>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">Python Code Review Assistant</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#copy1">Copy prompt</a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#vote1">↑ Upvote (23)</a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#comments1">💬 2 comments</a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Category</dt>
+                <dd class="govuk-summary-list__value">Code review</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Submitted by</dt>
+                <dd class="govuk-summary-list__value">Sarah Chen (sarah.chen@defra.gov.uk)</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Prompt</dt>
+                <dd class="govuk-summary-list__value">
+                  <div class="govuk-!-padding-3" style="background-color: #f3f2f1; font-family: monospace;">
+                    Review this Python code for best practices, security issues, and PEP 8 compliance. Suggest improvements with explanations: [paste your code here]
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h3 class="govuk-summary-card__title">Unit Test Generator</h3>
+            <ul class="govuk-summary-card__actions">
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#copy2">Copy prompt</a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#vote2">↑ Upvote (18)</a>
+              </li>
+              <li class="govuk-summary-card__action">
+                <a class="govuk-link" href="#comments2">💬 1 comment</a>
+              </li>
+            </ul>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Category</dt>
+                <dd class="govuk-summary-list__value">Testing</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Submitted by</dt>
+                <dd class="govuk-summary-list__value">James Wilson (james.wilson@defra.gov.uk)</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Prompt</dt>
+                <dd class="govuk-summary-list__value">
+                  <div class="govuk-!-padding-3" style="background-color: #f3f2f1; font-family: monospace;">
+                    Generate comprehensive unit tests for this function. Include edge cases, error handling, and mock external dependencies: [paste function here]
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="toggleAddPrompt()">
+          Add your own prompt
+        </button>
+
+        <div id="add-prompt-form" style="display: none;" class="govuk-!-margin-top-6">
+          <h2 class="govuk-heading-l">Add a new prompt</h2>
+          
+          <form class="form" action="/prompt-library/add" method="post">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="prompt-title">
+                Prompt title
+              </label>
+              <div id="prompt-title-hint" class="govuk-hint">
+                Maximum 100 characters
+              </div>
+              <input class="govuk-input" id="prompt-title" name="prompt-title" type="text" maxlength="100" aria-describedby="prompt-title-hint">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="prompt-description">
+                Description
+              </label>
+              <div id="prompt-description-hint" class="govuk-hint">
+                Maximum 200 characters
+              </div>
+              <textarea class="govuk-textarea" id="prompt-description" name="prompt-description" rows="3" maxlength="200" aria-describedby="prompt-description-hint"></textarea>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="prompt-text">
+                Your prompt
+              </label>
+              <div id="prompt-text-hint" class="govuk-hint">
+                Maximum 8000 characters
+              </div>
+              <textarea class="govuk-textarea" id="prompt-text" name="prompt-text" rows="8" maxlength="8000" aria-describedby="prompt-text-hint"></textarea>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="prompt-category">
+                Category
+              </label>
+              <select class="govuk-select" id="prompt-category" name="prompt-category">
+                <option value="code-review">Code review</option>
+                <option value="debugging">Debugging</option>
+                <option value="documentation">Documentation</option>
+                <option value="testing">Testing</option>
+                <option value="refactoring">Refactoring</option>
+                <option value="general">General development</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="submitter-name">
+                Your name
+              </label>
+              <input class="govuk-input" id="submitter-name" name="submitter-name" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="submitter-email">
+                Your email
+              </label>
+              <input class="govuk-input" id="submitter-email" name="submitter-email" type="email">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">Submit prompt</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleAddPrompt() {
+    var form = document.getElementById('add-prompt-form');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  }
+</script>
+
+{% endblock %}

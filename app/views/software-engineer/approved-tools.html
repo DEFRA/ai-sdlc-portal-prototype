@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Approved AI tools" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Software engineer",
+        href: "/software-engineer"
+      },
+      {
+        text: "Approved AI tools"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="/software-engineer">Software engineer guidance</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">Approved AI tools for software engineers</h1>
+    
+    <p class="govuk-body">These are the only AI tools approved for use by Defra software engineers.</p>
+
+    {{ govukInsetText({
+      text: "You must only use these approved tools. Other AI tools are not permitted as they lack the required enterprise licensing and security safeguards."
+    }) }}
+
+    <h2 class="govuk-heading-l">Microsoft Copilot</h2>
+    <p class="govuk-body">Enterprise licensed with data protection and security controls.</p>
+    
+    <h3 class="govuk-heading-s">Use for:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>general coding assistance</li>
+      <li>debugging and problem solving</li>
+      <li>code reviews and explanations</li>
+      <li>documentation writing</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">GitHub Copilot</h2>
+    <p class="govuk-body">Integrated coding assistant with enterprise controls.</p>
+    
+    <h3 class="govuk-heading-s">Use for:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>code completion and suggestions</li>
+      <li>generating code from comments</li>
+      <li>writing tests</li>
+      <li>refactoring assistance</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Getting access</h2>
+    <p class="govuk-body">If you need access to these tools, <a href="/request-form" class="govuk-link">request a licence</a>.</p>
+
+    <h2 class="govuk-heading-l">Privacy and security</h2>
+    <p class="govuk-body">Before using any AI tool, you must configure proper privacy settings. This keeps your sensitive information safe.</p>
+    
+    <p class="govuk-body">
+      <a href="https://defra.github.io/ai-sdlc-tool-guidance/" class="govuk-link" rel="external">
+        Check tool-specific privacy guidance
+      </a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

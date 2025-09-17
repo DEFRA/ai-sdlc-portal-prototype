@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Choose your role" %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="/">Defra AI Guidance Portal</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form class="form" action="/choose-role" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="role-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is your role?
+            </h1>
+          </legend>
+          <div id="role-hint" class="govuk-hint">
+            Select the role that best describes your work at Defra.
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="role" name="role" type="radio" value="software-engineer">
+              <label class="govuk-label govuk-radios__label" for="role">
+                Software engineer
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="role-2" name="role" type="radio" value="other" disabled>
+              <label class="govuk-label govuk-radios__label" for="role-2">
+                <span class="govuk-hint">Other roles will be added in future</span>
+                <span class="govuk-hint govuk-!-font-size-16">Coming soon</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          My role is not listed
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        We're adding guidance for more roles regularly. For now, you can still access our generic resources like the prompt library and acceptable use policy.
+        <br><br>
+        <a href="/generic-hub" class="govuk-link">Access generic resources</a>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+{% endblock %}

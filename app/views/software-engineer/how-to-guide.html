@@ -1,0 +1,148 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="How to use AI effectively" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Software engineer",
+        href: "/software-engineer"
+      },
+      {
+        text: "How to use AI effectively"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="/software-engineer">Software engineer guidance</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">How to use AI effectively in software development</h1>
+    
+    <p class="govuk-body-l">Follow this guidance to get the most from AI tools while maintaining quality and security.</p>
+
+    <h2 class="govuk-heading-l">Before you start</h2>
+    <p class="govuk-body">Make sure you have:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>access to approved AI tools</li>
+      <li>configured privacy settings correctly</li>
+      <li>read the acceptable use policy</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Getting started with AI-assisted development</h2>
+
+    <h3 class="govuk-heading-m">Write clear prompts</h3>
+    <p class="govuk-body">Be specific about what you want. Include context about your project, coding standards, and requirements.</p>
+    
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="good-example">
+        Good example:
+      </label>
+      <div class="govuk-!-padding-3" style="background-color: #f3f2f1; border-left: 10px solid #00703c;">
+        <p class="govuk-body govuk-!-margin-bottom-0">"Write a Python function to validate email addresses using regex. Follow PEP 8 style guide and include docstrings."</p>
+      </div>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="poor-example">
+        Poor example:
+      </label>
+      <div class="govuk-!-padding-3" style="background-color: #f3f2f1; border-left: 10px solid #d4351c;">
+        <p class="govuk-body govuk-!-margin-bottom-0">"Make an email validator."</p>
+      </div>
+    </div>
+
+    <h3 class="govuk-heading-m">Start small</h3>
+    <p class="govuk-body">Begin with simple tasks like code explanations or basic functions before moving to complex features.</p>
+
+    <h3 class="govuk-heading-m">Review everything</h3>
+    <p class="govuk-body">Always review and test AI-generated code. AI can make mistakes or suggest insecure practices.</p>
+
+    <h2 class="govuk-heading-l">The Defra AI development workflow</h2>
+    <p class="govuk-body">Based on the <a href="https://defra.github.io/defra-ai-sdlc/" class="govuk-link" rel="external">Defra AI SDLC playbook</a>, follow this workflow:</p>
+
+    <h3 class="govuk-heading-m">1. Project setup</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Define project requirements clearly</li>
+      <li>Set up your development environment</li>
+      <li>Configure AI tools with proper privacy settings</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">2. Development</h3>
+    <p class="govuk-body">Develop your solution iteratively, using AI for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>implementation assistance</li>
+      <li>code generation from specifications</li>
+      <li>problem-solving and debugging</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">3. Test-driven development</h3>
+    <p class="govuk-body">Use AI tools to help with:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>writing test cases</li>
+      <li>generating test data</li>
+      <li>implementing tests alongside features</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">4. Testing</h3>
+    <p class="govuk-body">Apply AI for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>unit testing strategies</li>
+      <li>journey testing scenarios</li>
+      <li>test automation</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">5. Refactoring</h3>
+    <p class="govuk-body">Once features are complete, use AI for:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>code optimisation suggestions</li>
+      <li>improving readability</li>
+      <li>identifying code smells</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">6. Documentation</h3>
+    <p class="govuk-body">Use AI to help:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>update technical documentation</li>
+      <li>write clear code comments</li>
+      <li>create user guidance</li>
+      <li>maintain alignment with project goals</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Security and privacy considerations</h2>
+
+    <h3 class="govuk-heading-m">Protect sensitive information</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Never share personal data, API keys, or internal system details with AI tools</li>
+      <li>Review your organisation's data classification before sharing any information</li>
+      <li>Use dummy data for examples when possible</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">Validate AI suggestions</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Don't trust AI-generated code blindly</li>
+      <li>Test all code thoroughly</li>
+      <li>Have peer reviews for AI-assisted work</li>
+      <li>Check for security vulnerabilities</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Getting help</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/prompt-library" class="govuk-link">Browse the prompt library</a> for examples from colleagues</li>
+      <li><a href="/request-form" class="govuk-link">Contact the AI Capabilities and Enablement team</a> for support</li>
+      <li>Join the #ask-ace Slack channel for questions</li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}

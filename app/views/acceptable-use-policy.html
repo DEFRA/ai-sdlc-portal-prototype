@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Acceptable use policy" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Acceptable use policy"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">Acceptable use policy for AI tools</h1>
+    
+    <p class="govuk-body-l">You must follow this policy when using AI tools in your Defra role.</p>
+
+    <h2 class="govuk-heading-l">Approved tools only</h2>
+    <p class="govuk-body">You must only use AI tools that have been approved by Defra. Currently, these are:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Microsoft Copilot (enterprise licence)</li>
+      <li>GitHub Copilot (enterprise licence)</li>
+    </ul>
+    <p class="govuk-body">Using non-approved AI tools is not permitted.</p>
+
+    <h2 class="govuk-heading-l">Protecting information</h2>
+
+    <h3 class="govuk-heading-m">Do not share:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Personal data about citizens, colleagues, or stakeholders</li>
+      <li>Commercially sensitive information</li>
+      <li>Security credentials or API keys</li>
+      <li>Internal system configurations</li>
+      <li>Draft policies or ministerial briefs</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">You may share:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Anonymised code examples</li>
+      <li>General technical questions</li>
+      <li>Publicly available information</li>
+      <li>Non-sensitive documentation</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Your responsibilities</h2>
+
+    <h3 class="govuk-heading-m">Before using AI tools:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Configure privacy settings as instructed</li>
+      <li>Check information classification</li>
+      <li>Consider data protection implications</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">When using AI tools:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Review and validate all AI-generated content</li>
+      <li>Do not rely on AI for final decisions</li>
+      <li>Maintain professional standards</li>
+      <li>Keep your knowledge and skills up to date</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">After using AI tools:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Test any AI-generated code thoroughly</li>
+      <li>Have work reviewed by colleagues where appropriate</li>
+      <li>Document any AI assistance in your work</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Getting help</h2>
+    <p class="govuk-body">If you're unsure whether something is appropriate, ask:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Your line manager</li>
+      <li>The Data Protection team</li>
+      <li>The AI Capabilities and Enablement team via <a href="/request-form" class="govuk-link">support request</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Consequences</h2>
+    <p class="govuk-body">Misuse of AI tools may result in:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Removal of tool access</li>
+      <li>Disciplinary action</li>
+      <li>Security investigation</li>
+    </ul>
+
+    <p class="govuk-body">This policy is reviewed regularly and may be updated.</p>
+
+    <p class="govuk-body"><strong>Last updated:</strong> 17 September 2025</p>
+
+  </div>
+</div>
+
+{% endblock %}

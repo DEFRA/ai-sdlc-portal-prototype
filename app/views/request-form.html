@@ -1,0 +1,148 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Request support" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Request support"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">Request support</h1>
+    
+    <p class="govuk-body-l">Get help with AI tools, licensing, or technical issues.</p>
+
+    {% if data['success'] == 'true' %}
+      {{ govukNotificationBanner({
+        type: "success",
+        html: "<p class=\"govuk-notification-banner__heading\">Your request has been submitted successfully</p><p class=\"govuk-body\">We'll respond within the timeframe you specified.</p>"
+      }) }}
+    {% endif %}
+
+    <form class="form" action="/request-form" method="post">
+
+      <h2 class="govuk-heading-l">Your details</h2>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="name">
+          Your name
+        </label>
+        <input class="govuk-input" id="name" name="name" type="text" value="{{ data['name'] }}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email">
+          Your email address
+        </label>
+        <input class="govuk-input" id="email" name="email" type="email" value="{{ data['email'] }}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="department">
+          Your department or team
+        </label>
+        <input class="govuk-input" id="department" name="department" type="text" value="{{ data['department'] }}">
+      </div>
+
+      <h2 class="govuk-heading-l">Your request</h2>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="request-type-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            What do you need help with?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="request-type" name="request-type" type="radio" value="licence" {% if data['request-type'] == 'licence' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="request-type">
+                Licence acquisition for approved AI tools
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="request-type-2" name="request-type" type="radio" value="training" {% if data['request-type'] == 'training' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="request-type-2">
+                Training on using AI effectively
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="request-type-3" name="request-type" type="radio" value="technical" {% if data['request-type'] == 'technical' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="request-type-3">
+                Technical issues with AI tools
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="request-type-4" name="request-type" type="radio" value="guidance" {% if data['request-type'] == 'guidance' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="request-type-4">
+                General AI guidance question
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="request-type-5" name="request-type" type="radio" value="other" {% if data['request-type'] == 'other' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="request-type-5">
+                Other
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="details">
+          Tell us more about your request
+        </label>
+        <div id="details-hint" class="govuk-hint">
+          Include as much detail as possible to help us respond quickly.
+        </div>
+        <textarea class="govuk-textarea" id="details" name="details" rows="8" aria-describedby="details-hint">{{ data['details'] }}</textarea>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="urgency-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            How urgent is this request?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="urgency" name="urgency" type="radio" value="low" {% if data['urgency'] == 'low' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="urgency">
+                Low - respond within 5 working days
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="urgency-2" name="urgency" type="radio" value="medium" {% if data['urgency'] == 'medium' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="urgency-2">
+                Medium - respond within 2 working days
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="urgency-3" name="urgency" type="radio" value="high" {% if data['urgency'] == 'high' %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="urgency-3">
+                High - respond within 1 working day
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Submit request</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
