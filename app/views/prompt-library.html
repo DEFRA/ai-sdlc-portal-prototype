@@ -19,6 +19,28 @@
 
 {% block content %}
 
+<style>
+  /* Reduce card header height */
+  .govuk-summary-card__title-wrapper {
+    padding: 10px 20px;
+  }
+  
+  /* Reduce actions container padding */
+  .govuk-summary-card__actions {
+    padding: 10px 20px;
+  }
+  
+  /* Remove button margins in card actions */
+  .govuk-summary-card__actions .govuk-button {
+    margin: 0;
+  }
+  
+  /* Hide default separators */
+  .govuk-summary-card__action {
+    border-left: none !important;
+  }
+</style>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -73,20 +95,17 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
-        <h2 class="govuk-heading-l">Example prompts</h2>
+        <h2 class="govuk-heading-l">All prompts</h2>
 
         <div class="govuk-summary-card">
           <div class="govuk-summary-card__title-wrapper">
-            <h3 class="govuk-summary-card__title">Implement code using PRD</h3>
+            <h3 class="govuk-summary-card__title">Code Generator</h3>
             <ul class="govuk-summary-card__actions">
               <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#copy1">Copy prompt</a>
+                <button class="govuk-button" type="button" onclick="copyPromptToClipboard('prompt1')">Copy prompt</button>
               </li>
               <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#vote1">↑ Upvote (23)</a>
-              </li>
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#comments1">💬 2 comments</a>
+                <button class="govuk-button govuk-button--secondary" type="button" onclick="upvotePrompt('prompt1', this)">↑ Upvote (23)</button>
               </li>
             </ul>
           </div>
@@ -104,7 +123,7 @@
                 <dt class="govuk-summary-list__key">Prompt</dt>
                 <dd class="govuk-summary-list__value">
                   <div class="govuk-!-padding-3" style="background-color: #f3f2f1; font-family: monospace;">
-                    <pre style="white-space: pre-wrap; word-wrap: break-word; margin: 0;">I have provided you with a Product Requirements document(PRD). Please analyze the features and User Stories and implement as follows:
+                    <pre id="prompt1" style="white-space: pre-wrap; word-wrap: break-word; margin: 0;">I have provided you with a Product Requirements document(PRD). Please analyze the features and User Stories and implement as follows:
 
 1. First, outline your understanding of:
    - The specific requirements from this story
@@ -147,13 +166,10 @@ Constraints:
             <h3 class="govuk-summary-card__title">Unit Test Generator</h3>
             <ul class="govuk-summary-card__actions">
               <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#copy2">Copy prompt</a>
+                <button class="govuk-button" type="button" onclick="copyPromptToClipboard('prompt2')">Copy prompt</button>
               </li>
               <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#vote2">↑ Upvote (18)</a>
-              </li>
-              <li class="govuk-summary-card__action">
-                <a class="govuk-link" href="#comments2">💬 1 comment</a>
+                <button class="govuk-button govuk-button--secondary" type="button" onclick="upvotePrompt('prompt2', this)">↑ Upvote (18)</button>
               </li>
             </ul>
           </div>
@@ -171,7 +187,7 @@ Constraints:
                 <dt class="govuk-summary-list__key">Prompt</dt>
                 <dd class="govuk-summary-list__value">
                   <div class="govuk-!-padding-3" style="background-color: #f3f2f1; font-family: monospace;">
-                    <pre style="white-space: pre-wrap; word-wrap: break-word; margin: 0;"># CONTEXT
+                    <pre id="prompt2" style="white-space: pre-wrap; word-wrap: break-word; margin: 0;"># CONTEXT
 
 I have provided you with a Product Requirements Document (PRD). Please analyze feature [FEATURE_NAME] and its User Stories to create comprehensive Jest tests. Do not work on other features yet.
 
@@ -315,6 +331,110 @@ Please provide:
     } else {
       form.style.display = 'none';
     }
+  }
+
+  function copyPromptToClipboard(promptId) {
+    const promptElement = document.getElementById(promptId);
+    const promptText = promptElement.textContent;
+    
+    // Use the modern Clipboard API if available
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(promptText).then(function() {
+        showCopySuccess();
+      }).catch(function(err) {
+        console.error('Failed to copy text: ', err);
+        fallbackCopyToClipboard(promptText);
+      });
+    } else {
+      // Fallback for older browsers
+      fallbackCopyToClipboard(promptText);
+    }
+  }
+
+  function upvotePrompt(promptId, buttonElement) {
+    // Extract current vote count
+    const currentText = buttonElement.textContent;
+    const match = currentText.match(/Upvote \((\d+)\)/);
+    const currentVotes = match ? parseInt(match[1]) : 0;
+    const newVotes = currentVotes + 1;
+    
+    // Update button text
+    buttonElement.textContent = `↑ Upvote (${newVotes})`;
+    
+    // Show success notification
+    showUpvoteSuccess();
+    
+    // Disable button temporarily to prevent double-clicking
+    buttonElement.disabled = true;
+    setTimeout(function() {
+      buttonElement.disabled = false;
+    }, 1000);
+  }
+
+  function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      document.execCommand('copy');
+      showCopySuccess();
+    } catch (err) {
+      console.error('Fallback copy failed: ', err);
+    } finally {
+      document.body.removeChild(textArea);
+    }
+  }
+
+  function showCopySuccess() {
+    showNotification('Prompt copied to clipboard', 'success');
+  }
+
+  function showUpvoteSuccess() {
+    showNotification('Thank you for your vote!', 'success');
+  }
+
+  function showNotification(message, type) {
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll('.govuk-notification-banner');
+    existingNotifications.forEach(function(notification) {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    });
+
+    // Create a new notification
+    const notification = document.createElement('div');
+    notification.className = 'govuk-notification-banner';
+    notification.setAttribute('role', type === 'success' ? 'alert' : 'region');
+    notification.innerHTML = `
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          ${type === 'success' ? 'Success' : 'Information'}
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          ${message}
+        </p>
+      </div>
+    `;
+    
+    // Insert at the top of the main content
+    const mainContent = document.querySelector('.govuk-grid-row');
+    mainContent.insertBefore(notification, mainContent.firstChild);
+    
+    // Remove the notification after 3 seconds
+    setTimeout(function() {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 3000);
   }
 </script>
 
