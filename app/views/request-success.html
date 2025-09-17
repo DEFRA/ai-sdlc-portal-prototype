@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Request submitted" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Request support",
+        href: "/request-form"
+      },
+      {
+        text: "Request submitted"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <main id="main-content" role="main">
+
+    {{ govukPanel({
+      titleText: "Request submitted",
+      html: "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">We've sent you a confirmation email with your request details.</p>
+
+    {% if data['urgency'] == 'high' %}
+      <p class="govuk-body">Because you marked this as high priority, we'll respond within 1 working day.</p>
+    {% elif data['urgency'] == 'medium' %}
+      <p class="govuk-body">Because you marked this as medium priority, we'll respond within 2 working days.</p>
+    {% else %}
+      <p class="govuk-body">Because you marked this as low priority, we'll respond within 5 working days.</p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">If you need to contact us</h2>
+
+    <p class="govuk-body">Quote your reference number <strong>HDJ2123F</strong> when contacting the AI Capabilities and Enablement team.</p>
+
+    <p class="govuk-body">
+      Email: <a href="mailto:ai-team@defra.gov.uk" class="govuk-link">ai-team@defra.gov.uk</a><br>
+      Slack: #ask-ace channel
+    </p>
+
+    <p class="govuk-body">
+      <a href="/software-engineer" class="govuk-link">Return to AI guidance</a>
+    </p>
+
+    </main>
+  </div>
+</div>
+
+{% endblock %}

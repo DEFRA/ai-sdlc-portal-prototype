@@ -4,3 +4,21 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block header %}
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+  {{ super() }}
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+  <script>
+    // Ensure skip link focuses on main content
+    document.addEventListener('DOMContentLoaded', function() {
+      const mainContent = document.getElementById('main-content');
+      if (mainContent) {
+        mainContent.setAttribute('tabindex', '-1');
+      }
+    });
+  </script>
+{% endblock %}

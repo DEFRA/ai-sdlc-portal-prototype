@@ -24,13 +24,16 @@
 
     <h1 class="govuk-heading-xl">Acceptable use policy for AI tools</h1>
     
-    <p class="govuk-body-l">You must follow this policy when using AI tools in your Defra role.</p>
+    {{ govukWarningText({
+      text: "You must follow this policy when using AI tools in your Defra role.",
+      iconFallbackText: "Warning"
+    }) }}
 
     <h2 class="govuk-heading-l">Approved tools only</h2>
     <p class="govuk-body">You must only use AI tools that have been approved by Defra. Currently, these are:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>Microsoft Copilot (enterprise licence)</li>
-      <li>GitHub Copilot (enterprise licence)</li>
+      <li>Microsoft Copilot (Defra enterprise licence)</li>
+      <li>GitHub Copilot (Defra enterprise licence)</li>
     </ul>
     <p class="govuk-body">Using non-approved AI tools is not permitted.</p>
 

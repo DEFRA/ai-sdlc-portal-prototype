@@ -25,49 +25,54 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    <main id="main-content" role="main">
 
     <h1 class="govuk-heading-xl">Approved AI tools for software engineers</h1>
     
-    <p class="govuk-body">These are the only AI tools approved for use by Defra software engineers.</p>
+    <p class="govuk-body">These are the only AI tools you can use as a Defra software engineer.</p>
 
-    {{ govukInsetText({
-      text: "You must only use these approved tools. Other AI tools are not permitted as they lack the required enterprise licensing and security safeguards."
+    {{ govukWarningText({
+      text: "You must only use these approved tools. Other AI tools are not permitted as they lack the required security safeguards.",
+      iconFallbackText: "Warning"
     }) }}
 
     <h2 class="govuk-heading-l">Microsoft Copilot</h2>
-    <p class="govuk-body">Enterprise licensed with data protection and security controls.</p>
-    
-    <h3 class="govuk-heading-s">Use for:</h3>
+    <p class="govuk-body">A general purpose AI assistant. You can only use this on Defra devices with a Defra account.</p>
+
+    <h3 class="govuk-heading-s">You can use this for:</h3>
     <ul class="govuk-list govuk-list--bullet">
-      <li>general coding assistance</li>
-      <li>debugging and problem solving</li>
-      <li>code reviews and explanations</li>
-      <li>documentation writing</li>
+      <li>general AI assistance</li>
+      <li>working with OFFICIAL-SENSITIVE data</li>
     </ul>
+
+    <p class="govuk-body">
+      <a href="https://defra.github.io/ai-guidance/microsoft-copilot/" class="govuk-link" rel="external">
+        More information about Microsoft Copilot (opens in new tab)
+      </a>
+    </p>    
 
     <h2 class="govuk-heading-l">GitHub Copilot</h2>
-    <p class="govuk-body">Integrated coding assistant with enterprise controls.</p>
+    <p class="govuk-body">An integrated coding assistant with enterprise controls. You can integrate this into both Visual Studio Code and IntelliJ.</p>
     
-    <h3 class="govuk-heading-s">Use for:</h3>
+    <h3 class="govuk-heading-s">You can use this for:</h3>
     <ul class="govuk-list govuk-list--bullet">
-      <li>code completion and suggestions</li>
-      <li>generating code from comments</li>
-      <li>writing tests</li>
-      <li>refactoring assistance</li>
+      <li>code assistance within your Integrated Development Environment (IDE)</li>
+      <li>working with OFFICIAL-SENSITIVE data</li>
     </ul>
 
+    <p class="govuk-body">
+      <a href="https://defra.github.io/ai-guidance/github-copilot/" class="govuk-link" rel="external">
+        More information about GitHub Copilot (opens in new tab)
+      </a>
+    </p>      
+
     <h2 class="govuk-heading-l">Getting access</h2>
-    <p class="govuk-body">If you need access to these tools, <a href="/request-form" class="govuk-link">request a licence</a>.</p>
+    <p class="govuk-body">If you need access to these tools, you can <a href="/request-form" class="govuk-link">request a licence through our support form</a>.</p>
 
     <h2 class="govuk-heading-l">Privacy and security</h2>
-    <p class="govuk-body">Before using any AI tool, you must configure proper privacy settings. This keeps your sensitive information safe.</p>
+    <p class="govuk-body">These AI tools are configured with the necessary security safeguards. This keeps your sensitive information safe.</p>
     
-    <p class="govuk-body">
-      <a href="https://defra.github.io/ai-sdlc-tool-guidance/" class="govuk-link" rel="external">
-        Check tool-specific privacy guidance
-      </a>
-    </p>
-
+    </main>
   </div>
 </div>
 
