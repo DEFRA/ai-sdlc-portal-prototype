@@ -14,7 +14,7 @@
       }
     ]
   }) }}
-  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+  <a class="govuk-back-link" href="/" onclick="window.history.back(); return false;">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -130,12 +130,12 @@
       <div class="govuk-accordion__section">
         <div class="govuk-accordion__section-header">
           <h3 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-using-ai-heading-2">
+            <span class="govuk-accordion__section-button" id="accordion-using-ai-heading-1">
               Should I always trust AI-generated content?
             </span>
           </h3>
         </div>
-        <div id="accordion-using-ai-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-using-ai-heading-2">
+        <div id="accordion-using-ai-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-using-ai-heading-1">
           <p class="govuk-body">No, you should always review and verify AI-generated content before using it. AI tools can make mistakes or provide inaccurate information.</p>
           <p class="govuk-body">Always:</p>
           <ul class="govuk-list govuk-list--bullet">
