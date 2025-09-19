@@ -72,3 +72,10 @@ router.post('/prompt-library/add', function (req, res) {
 router.get('/generic-hub', function (req, res) {
   res.render('generic-hub')
 })
+
+// FAQ route
+router.get('/faq', function (req, res) {
+  res.render('faq')
+})
+
+module.exports = router

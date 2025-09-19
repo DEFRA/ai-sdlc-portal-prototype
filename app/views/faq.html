@@ -1,0 +1,194 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Frequently asked questions" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Frequently asked questions"
+      }
+    ]
+  }) }}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">Frequently asked questions</h1>
+
+    <p class="govuk-body-l">Find answers to common questions about using AI tools at Defra.</p>
+
+    <h2 class="govuk-heading-l">Getting started</h2>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-getting-started">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-getting-started-heading-1">
+              Which AI tools can I use at Defra?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-getting-started-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-getting-started-heading-1">
+          <p class="govuk-body">You can only use AI tools that have been approved by Defra:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Microsoft Copilot (Defra enterprise licence)</li>
+            <li>GitHub Copilot (Defra enterprise licence)</li>
+          </ul>
+          <p class="govuk-body">You cannot use any other AI tools without prior approval.</p>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-getting-started-heading-2">
+              How do I get access to approved AI tools?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-getting-started-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-getting-started-heading-2">
+          <p class="govuk-body">Contact your line manager or IT support team to request access to approved AI tools. You may need to complete training before gaining access.</p>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-getting-started-heading-3">
+              Do I need training to use AI tools?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-getting-started-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-getting-started-heading-3">
+          <p class="govuk-body">Yes, you must complete mandatory training on AI tool usage and data security before using any approved AI tools. This ensures you understand the acceptable use policy and data handling requirements.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-l">Data and security</h2>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-data-security">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-data-security-heading-1">
+              What data can I use with AI tools?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-data-security-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-data-security-heading-1">
+          <p class="govuk-body">You can only input data classified as 'OFFICIAL' or 'OFFICIAL-SENSITIVE' into approved AI tools.</p>
+          <p class="govuk-body">You must never input:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Data classified as 'SECRET'</li>
+            <li>Personally identifiable information (PII)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-data-security-heading-2">
+              Can I use personal information with AI tools?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-data-security-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-data-security-heading-2">
+          <p class="govuk-body">No, you must not input any personally identifiable information (PII) into AI tools. This includes names, email addresses, phone numbers, or any other data that could identify individuals.</p>
+          <p class="govuk-body">This is to protect privacy and comply with UK GDPR requirements.</p>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-data-security-heading-3">
+              How do I know what data classification I'm working with?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-data-security-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-data-security-heading-3">
+          <p class="govuk-body">Check the data classification markings on your documents or systems. If you're unsure, ask your line manager or information security team.</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/government-security-classifications" class="govuk-link">Government Security Classifications guidance</a> for more information.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-l">Using AI effectively</h2>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-using-ai">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-using-ai-heading-2">
+              Should I always trust AI-generated content?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-using-ai-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-using-ai-heading-2">
+          <p class="govuk-body">No, you should always review and verify AI-generated content before using it. AI tools can make mistakes or provide inaccurate information.</p>
+          <p class="govuk-body">Always:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Check facts and figures</li>
+            <li>Review for accuracy and relevance</li>
+            <li>Ensure content meets quality standards</li>
+            <li>Take responsibility for final outputs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-l">Support and reporting</h2>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-support">
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-support-heading-1">
+              Who can I contact for help?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-support-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-support-heading-1">
+          <p class="govuk-body">You can <a href="/request-form" class="govuk-link">request support</a> for help with licensing, training, or technical issues related to AI tools.</p>
+          <p class="govuk-body">For urgent security concerns, contact the information security team immediately.</p>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section">
+        <div class="govuk-accordion__section-header">
+          <h3 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-support-heading-2">
+              What should I do if I accidentally input sensitive data?
+            </span>
+          </h3>
+        </div>
+        <div id="accordion-support-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-support-heading-2">
+          <p class="govuk-body">If you accidentally input sensitive data into an AI tool:</p>
+          <ol class="govuk-list govuk-list--number">
+            <li>Stop using the tool immediately</li>
+            <li>Report the incident to your line manager</li>
+            <li>Contact the information security team</li>
+            <li>Follow your department's data breach procedures</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="govuk-heading-m">Still have questions?</h2>
+    <p class="govuk-body">If you can't find the answer you're looking for, <a href="/request-form" class="govuk-link">request support</a> and our team will help you.</p>
+
+  </div>
+</div>
+
+{% endblock %}
