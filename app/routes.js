@@ -14,6 +14,8 @@ router.post('/choose-role', function (req, res) {
 
   if (selectedRole === 'software-engineer') {
     res.redirect('/software-engineer')
+  } else if (selectedRole === 'test-engineer') {
+    res.redirect('/test-engineer')
   } else {
     // For future roles, redirect back with error or to generic hub
     res.redirect('/choose-role')
